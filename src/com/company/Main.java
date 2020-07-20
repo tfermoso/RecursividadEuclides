@@ -1,5 +1,6 @@
 package com.company;
 
+import java.util.Random;
 import java.util.Scanner;
 
 public class Main {
@@ -12,7 +13,8 @@ public class Main {
         leer.nextLine();
         System.out.println("Introduce el ancho de la superficie");
         double ancho=leer.nextDouble();
-        double baldosa=calculartamanhoBaldosa(longitud,ancho);
+        //double baldosa=calculartamanhoBaldosa(longitud,ancho);
+        double baldosa=calculartamanhoBaldosaSinRecursividad(longitud,ancho);
         System.out.println("El tamaño de la badosa es: "+baldosa);
         double numeroBaldosas=calcularNumeroBaldosas(longitud,ancho,baldosa);
         System.out.println("El número de baldosas es: "+numeroBaldosas);
@@ -28,5 +30,27 @@ public class Main {
         if(longitud>ancho) return calculartamanhoBaldosa(longitud-ancho,ancho);
         else
             return calculartamanhoBaldosa(longitud,ancho-longitud);
+    }
+
+    private static double calculartamanhoBaldosaSinRecursividad(double l, double a){
+        double longitud,ancho;
+        if(l>=a){
+            longitud=l;
+            ancho=a;
+        }else{
+            longitud=a;
+            ancho=l;
+        }
+
+        while(ancho>1) {
+            if (longitud > ancho) {
+                if (longitud % ancho == 0) {
+                    return ancho;
+                } else {
+                    ancho -= 1;
+                }
+            }
+        }
+        return 1;
     }
 }
