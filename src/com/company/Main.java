@@ -13,8 +13,20 @@ public class Main {
         leer.nextLine();
         System.out.println("Introduce el ancho de la superficie");
         double ancho=leer.nextDouble();
-        //double baldosa=calculartamanhoBaldosa(longitud,ancho);
-        double baldosa=calculartamanhoBaldosaSinRecursividad(longitud,ancho);
+        //con recursividad
+        long inicio = System.currentTimeMillis();
+        double baldosa=calculartamanhoBaldosa(longitud,ancho);
+        long fin = System.currentTimeMillis();
+        double tiempo = (double) ((fin - inicio)/1000);
+        System.out.println("Con recursividad " +tiempo +" segundos");
+        System.out.println("El tamaño de la badosa es: "+baldosa);
+
+        //Sin recursividad
+        inicio=System.currentTimeMillis();
+        baldosa=calculartamanhoBaldosaSinRecursividad(longitud,ancho);
+        fin=System.currentTimeMillis();
+        tiempo=(double)((fin-inicio)/1000);
+        System.out.println("Sin recursividad "+tiempo+" segundos");
         System.out.println("El tamaño de la badosa es: "+baldosa);
         double numeroBaldosas=calcularNumeroBaldosas(longitud,ancho,baldosa);
         System.out.println("El número de baldosas es: "+numeroBaldosas);
